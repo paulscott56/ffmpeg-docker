@@ -93,13 +93,13 @@ DIR=$(mktemp -d) && cd ${DIR} && \
 
 # libmp3lame
 DIR=$(mktemp -d) && cd ${DIR} && \
-              wget http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
+              wget http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz && \
               tar xzvf lame-3.99.5.tar.gz && \
               cd lame-3.99.5 && \
               ./configure --prefix="${SRC}" --enable-nasm --disable-shared && \
               make && \ 
               make install && \
-              make distclean&& \
+              make distclean && \
 
 # faac + http://stackoverflow.com/a/4320377
 DIR=$(mktemp -d) &&  cd ${DIR} && \
