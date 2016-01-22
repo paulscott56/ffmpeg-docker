@@ -39,14 +39,14 @@ DIR=$(mktemp -d) && cd ${DIR} && \
               make distclean
 
 # libogg
-DIR=$(mktemp -d) && cd ${DIR} && \
-              curl -s http://downloads.xiph.org/releases/ogg/libogg-${OGG_VERSION}.tar.gz | tar zxvf - -C . && \
-              cd libogg-${OGG_VERSION} && \
-              ./configure --prefix="${SRC}" --bindir="${SRC}/bin" --disable-shared --docdir=/dev/null && \
-              make && \
-              make install && \
-              make distclean && \
-              rm -rf ${DIR}
+#DIR=$(mktemp -d) && cd ${DIR} && \
+#              curl -s http://downloads.xiph.org/releases/ogg/libogg-${OGG_VERSION}.tar.gz | tar zxvf - -C . && \
+#              cd libogg-${OGG_VERSION} && \
+#              ./configure --prefix="${SRC}" --bindir="${SRC}/bin" --disable-shared --docdir=/dev/null && \
+#              make && \
+#              make install && \
+#              make distclean && \
+#              rm -rf ${DIR}
 
 # libopus
 DIR=$(mktemp -d) && cd ${DIR} && \
@@ -60,26 +60,26 @@ DIR=$(mktemp -d) && cd ${DIR} && \
               rm -rf ${DIR}
 
 # libvorbis
-DIR=$(mktemp -d) && cd ${DIR} && \
-              curl -s http://downloads.xiph.org/releases/vorbis/libvorbis-${VORBIS_VERSION}.tar.gz | tar zxvf - -C . && \
-              cd libvorbis-${VORBIS_VERSION} && \
-              ./configure --prefix="${SRC}" --with-ogg="${SRC}" --bindir="${SRC}/bin" \
-              --disable-shared --datadir=${DIR} && \
-              make && \
-              make install && \
-              make distclean && \
-              rm -rf ${DIR}
+#DIR=$(mktemp -d) && cd ${DIR} && \
+#              curl -s http://downloads.xiph.org/releases/vorbis/libvorbis-${VORBIS_VERSION}.tar.gz | tar zxvf - -C . && \
+#              cd libvorbis-${VORBIS_VERSION} && \
+#              ./configure --prefix="${SRC}" --with-ogg="${SRC}" --bindir="${SRC}/bin" \
+#              --disable-shared --datadir=${DIR} && \
+#              make && \
+#              make install && \
+#              make distclean && \
+#              rm -rf ${DIR}
 
 # libtheora
-DIR=$(mktemp -d) && cd ${DIR} && \
-              curl -s http://downloads.xiph.org/releases/theora/libtheora-${THEORA_VERSION}.tar.bz2 | tar jxvf - -C . && \
-              cd libtheora-${THEORA_VERSION} && \
-              ./configure --prefix="${SRC}" --with-ogg="${SRC}" --bindir="${SRC}/bin" \
-              --disable-shared --datadir=${DIR} && \
-              make && \
-              make install && \
-              make distclean && \
-              rm -rf ${DIR}
+#DIR=$(mktemp -d) && cd ${DIR} && \
+#              curl -s http://downloads.xiph.org/releases/theora/libtheora-${THEORA_VERSION}.tar.bz2 | tar jxvf - -C . && \
+#              cd libtheora-${THEORA_VERSION} && \
+#              ./configure --prefix="${SRC}" --with-ogg="${SRC}" --bindir="${SRC}/bin" \
+#              --disable-shared --datadir=${DIR} && \
+#              make && \
+#              make install && \
+#              make distclean && \
+#              rm -rf ${DIR}
 
 # libvpx
 DIR=$(mktemp -d) && cd ${DIR} && \
@@ -93,14 +93,13 @@ DIR=$(mktemp -d) && cd ${DIR} && \
 
 # libmp3lame
 DIR=$(mktemp -d) && cd ${DIR} && \
-              curl -L -s http://downloads.sourceforge.net/project/lame/lame/${LAME_VERSION%.*}/lame-${LAME_VERSION}.tar.gz | tar zxvf - -C . && \
-              cd lame-${LAME_VERSION} && \
-              ./configure --prefix="${SRC}" --bindir="${SRC}/bin" --disable-shared --enable-nasm && \
-              make && \
+              wget http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
+              tar xzvf lame-3.99.5.tar.gz && \
+              cd lame-3.99.5 && \
+              ./configure --prefix="${SRC}" --enable-nasm --disable-shared && \
+              make && \ 
               make install && \
               make distclean&& \
-              rm -rf ${DIR}
-
 
 # faac + http://stackoverflow.com/a/4320377
 DIR=$(mktemp -d) &&  cd ${DIR} && \
